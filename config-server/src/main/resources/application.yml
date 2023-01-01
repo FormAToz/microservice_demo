@@ -12,7 +12,9 @@ spring:
             - classpath:/config
         git:
           uri: https://github.com/FormAToz/microservice_demo.git
-          search-paths: config/{application}/{profile}
+          search-paths:
+            - config/{application}
+            - config/{application}/{profile}
           default-label: develop
 
 server:
