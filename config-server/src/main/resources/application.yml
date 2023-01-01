@@ -3,13 +3,17 @@ spring:
     name: config-server
   profiles:
     active:
-      - native
+      - native, git
   cloud:
     config:
       server:
         native:
           search-locations:
             - classpath:/config
+        git:
+          uri: https://github.com/FormAToz/microservice_demo.git
+          search-paths: config/{application}/{profile}
+          default-label: develop
 
 server:
   port: 8071

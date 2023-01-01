@@ -12,7 +12,7 @@ spring:
     password: 123
 
 example:
-  property: I AM DEV (updated 5)
+  property: I AM DEV FROM GIT
 
 # Spring Boot Actuator
 management:
