@@ -2,15 +2,12 @@ spring:
   application:
     name: config-server
   profiles:
-    # Профиль Spring, связанный с репозиторием (файловая система)
     active:
       - native
   cloud:
     config:
       server:
-        # Локальная конфигурация: это может быть classpath или конкретный каталог в файловой системе
         native:
-          # Определение конкретной папки в файловой системе
           search-locations:
             - classpath:/config
 
