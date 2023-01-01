@@ -10,10 +10,10 @@ import org.springframework.hateoas.RepresentationModel;
 @ToString
 public class LicenseResponse extends RepresentationModel<LicenseResponse> {
 
-    private final int id;
-    private final String licenseId;
+    private final Long id;
     private final String description;
-    private final String organizationId;
+    private final Long organizationId;
     private final String productName;
     private final String licenseType;
+    private final String comment;
 }

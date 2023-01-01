@@ -4,13 +4,11 @@ Demo of microservice interaction.
 
 ## Stack
 
-| Description  |   Version   |
-|--------------|:-----------:|
-| JDK          |     17      |
-| Spring Boot  |    2.7.6    |
-| Spring Cloud |  2021.0.5   |
-| Lombok       |   1.18.24   |
-| Mapstruct    | 1.5.3.Final |
+* Java 17
+* Spring Boot
+* Lombok
+* Mapstruct
+* PostgreSql
 
 ## How to use
 

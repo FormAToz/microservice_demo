@@ -6,11 +6,11 @@ import java.util.Locale;
 
 public interface LicenseService {
 
-    String createLicense(License license, String organizationId, Locale locale);
+    License createLicense(License license, Locale locale);
 
-    License getLicense(String licenseId, String organizationId);
+    License getLicense(Long licenseId, Long organizationId, Locale locale);
 
-    String updateLicense(License license, String organizationId, Locale locale);
+    License updateLicense(License license, Long organizationId, Locale locale);
 
-    String deleteLicense(String licenseId, String organizationId, Locale locale);
+    String deleteLicense(Long licenseId, Long organizationId, Locale locale);
 }
