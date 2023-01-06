@@ -1,3 +1,4 @@
+
 # Microservice demo
 
 Demo of microservice interaction.
@@ -8,20 +9,18 @@ Demo of microservice interaction.
 * Spring Boot
 * Lombok
 * Mapstruct
-* PostgreSql
+* PostgreSQL
 
 ## How to use
 
-Clone repository from GitHub:
-
+**Clone repository from GitHub:**
 ```bash
 $ git clone https://github.com/FormAToz/microservice_demo.git
 ```
-
 FYI: all services have ReadMe-file with named commands.
 
-Create Docker images for all services (run commands inside each service project folder):
 
+**Create Docker images for all services (run commands inside each service project folder):**
 ```bash
 # create new package
 $ mvn clean package
@@ -30,8 +29,8 @@ $ mvn clean package
 $ docker build . -t <service-name>
 ```
 
-Get back to microservice-demo/dev project folder and run all services via Docker compose:
 
+**Get back to microservice-demo/dev project folder and run all services via Docker compose:**
 ```bash
 $ cd microservice-demo/dev
 
