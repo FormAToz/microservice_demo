@@ -27,6 +27,22 @@ services:
         aliases:
           - "license-service"
 
+  eureka-server:
+    image: eureka-server
+    container_name: eureka-server
+    ports:
+      - "8070:8070"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
+    depends_on:
+      config-server:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "eureka-server"
+
 networks:
   backend:
     driver: bridge
