@@ -1,5 +1,6 @@
 server:
   port: 8070
+
 eureka:
   instance:
     hostname: localhost
@@ -11,3 +12,13 @@ eureka:
         http://${eureka.instance.hostname}:${server.port}/eureka
   server:
     waitTimeInMsWhenSyncEmpty: 5
+
+# Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,refresh,bus-refresh
+  endpoint:
+    health:
+      show-details: always
