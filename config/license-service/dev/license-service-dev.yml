@@ -7,7 +7,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/fstock_dev
+    url: jdbc:postgresql://database:5432/fstock_dev
     username: postgres
     password: '{cipher}800e203172405d52235fe09056fbf2eef2433a38ed86a41008209c0c5c64155b'
 
