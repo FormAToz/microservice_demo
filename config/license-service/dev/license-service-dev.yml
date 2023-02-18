@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database:5432/fstock_dev
     username: postgres
-    password: '{cipher}800e203172405d52235fe09056fbf2eef2433a38ed86a41008209c0c5c64155b'
+    password: '{cipher}78cb416c3b2d6aa1e87638cd32ccdee2b93f764051404d6d95ee005eb12744d5'
 
 example:
   property: I AM DEV FROM GIT
