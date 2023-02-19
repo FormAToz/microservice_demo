@@ -13,7 +13,8 @@ $ mvn clean package
 # build named Docker image
 $ docker build . -t config-server
 
-# run image in background mode (detached)
+# separate run image in background mode (detached, without environment variables)
+# env variables definition example: -e "SPRING_PROFILES_ACTIVE=dev"
 $ docker run -d -p8071:8071 --name config-server config-server:latest
 
 # get info about all running containers

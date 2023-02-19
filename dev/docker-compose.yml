@@ -1,8 +1,30 @@
 version: '2.1'
 
 services:
+  database:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "fstock_dev"
+    volumes:
+      - ./V1_0_0__init_tables.sql:/docker-entrypoint-initdb.d/1-V1_0_0__init_tables.sql
+      - ./V1_0_1__add_data.sql:/docker-entrypoint-initdb.d/2-V1_0_1__add_data.sql
+    networks:
+      backend:
+        aliases:
+          - "database"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   config-server:
-    image: config-server
+    image: config-server:latest
     container_name: config-server
     ports:
       - "8071:8071"
@@ -12,7 +34,7 @@ services:
           - "config-server"
 
   license-service:
-    image: license-service
+    image: license-service:latest
     container_name: license-service
     ports:
       - "8080:8080"
@@ -28,7 +50,7 @@ services:
           - "license-service"
 
   eureka-server:
-    image: eureka-server
+    image: eureka-server:latest
     container_name: eureka-server
     ports:
       - "8070:8070"

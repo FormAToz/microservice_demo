@@ -30,6 +30,13 @@ $ docker build . -t <service-name>
 ```
 
 
+**Create Docker images for PostgreSql:**
+```bash
+# pull image from DockerHub
+$ docker pull postgres
+```
+
+
 **Get back to microservice-demo/dev project folder and run all services via Docker compose:**
 ```bash
 $ cd microservice-demo/dev
