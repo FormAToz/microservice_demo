@@ -7,19 +7,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/fstock_dev
     username: postgres
     password: '{cipher}78cb416c3b2d6aa1e87638cd32ccdee2b93f764051404d6d95ee005eb12744d5'
 
 example:
-  property: I AM DEV FROM GIT
-
-# Spring Boot Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,env,refresh,bus-refresh
-  endpoint:
-    health:
-      show-details: always
+  property: I AM DEFAULT FROM GIT
