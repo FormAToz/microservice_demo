@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class LicenseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="licenses_id_seq")
+    @SequenceGenerator(name = "licenses_id_seq", sequenceName = "licenses_id_seq", allocationSize = 1)
     @Column(name = "license_id", nullable = false)
     private Long id;
 
