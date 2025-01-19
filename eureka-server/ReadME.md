@@ -20,4 +20,4 @@ $ docker run -d -p8070:8070 --name eureka-server eureka-server:latest
 $ docker ps
 ```
 
-Set Spring profiles: `dev`
+Set Spring profiles: `dev,local`
