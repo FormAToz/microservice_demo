@@ -6,12 +6,17 @@ CREATE TABLE IF NOT EXISTS public.organizations
     contact_email   VARCHAR(100) NOT NULL,
     contact_phone   VARCHAR(20)  NOT NULL,
     CONSTRAINT organizations_pkey PRIMARY KEY (organization_id)
-)
-
-TABLESPACE pg_default;
+) TABLESPACE pg_default;
 
 ALTER TABLE public.organizations
     OWNER to postgres;
+
+CREATE SEQUENCE IF NOT EXISTS public.organizations_id_seq
+    START WITH 1
+    INCREMENT BY 1;
+
+ALTER SEQUENCE public.organizations_id_seq
+    OWNED BY public.organizations.organization_id;
 
 
 CREATE TABLE IF NOT EXISTS public.licenses
@@ -28,9 +33,14 @@ CREATE TABLE IF NOT EXISTS public.licenses
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID
-)
-
-TABLESPACE pg_default;
+) TABLESPACE pg_default;
 
 ALTER TABLE public.licenses
     OWNER to postgres;
+
+CREATE SEQUENCE IF NOT EXISTS public.licenses_id_seq
+    START WITH 1
+    INCREMENT BY 1;
+
+ALTER SEQUENCE public.licenses_id_seq
+    OWNED BY public.licenses.license_id;

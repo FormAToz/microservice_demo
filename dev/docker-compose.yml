@@ -8,7 +8,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_PASSWORD: "123"
       POSTGRES_DB: "fstock_dev"
     volumes:
       - ./V1_0_0__init_tables.sql:/docker-entrypoint-initdb.d/1-V1_0_0__init_tables.sql
@@ -16,10 +16,10 @@ services:
     networks:
       backend:
         aliases:
-          - "database"
+          - database
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
 
@@ -31,7 +31,7 @@ services:
     networks:
       backend:
         aliases:
-          - "config-server"
+          - config-server
 
   license-service:
     image: license-service:latest
@@ -44,10 +44,12 @@ services:
     depends_on:
       config-server:
         condition: service_started
+      database:
+        condition: service_healthy
     networks:
       backend:
         aliases:
-          - "license-service"
+          - license-service
 
   eureka-server:
     image: eureka-server:latest
@@ -63,7 +65,7 @@ services:
     networks:
       backend:
         aliases:
-          - "eureka-server"
+          - eureka-server
 
 networks:
   backend:
