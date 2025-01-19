@@ -22,6 +22,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class LicenseController {
 
     private final LicenseService licenseService;
+    private final LicenseRequestMapper licenseRequestMapper;
+    private final LicenseResponseMapper licenseResponseMapper;
 
     @PostMapping
     public ResponseEntity<LicenseResponse> createLicense(@PathVariable Long organizationId, // TODO Validation
@@ -31,8 +33,8 @@ public class LicenseController {
         log.info("createLicense(): organizationId={}, licenseRequest={}, locale={}",
                 organizationId, licenseRequest, locale);
 
-        var license = LicenseRequestMapper.INSTANCE.toModel(licenseRequest, organizationId);
-        var licenseResponse = LicenseResponseMapper.INSTANCE.toResponse(
+        var license = licenseRequestMapper.toModel(licenseRequest, organizationId);
+        var licenseResponse = licenseResponseMapper.toResponse(
                 licenseService.createLicense(license, locale));
         return ResponseEntity.ok(licenseResponse);
     }
@@ -45,8 +47,8 @@ public class LicenseController {
         log.info("getLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
 
         var license = licenseService.getLicense(licenseId, organizationId, locale);
-        var licenseRequest = LicenseRequestMapper.INSTANCE.toRequest(license);
-        var licenseResponse = LicenseResponseMapper.INSTANCE.toResponse(license);
+        var licenseRequest = licenseRequestMapper.toRequest(license);
+        var licenseResponse = licenseResponseMapper.toResponse(license);
         licenseResponse.add(
                 linkTo(methodOn(LicenseController.class)
                         .getLicense(organizationId, licenseResponse.getId(), null))
@@ -71,8 +73,8 @@ public class LicenseController {
         log.info("updateLicense(): organizationId={}, licenseRequest={}, locale={}",
                 organizationId, licenseRequest, locale);
 
-        var license = LicenseRequestMapper.INSTANCE.toModel(licenseRequest, organizationId);
-        var licenseResponse = LicenseResponseMapper.INSTANCE.toResponse(
+        var license = licenseRequestMapper.toModel(licenseRequest, organizationId);
+        var licenseResponse = licenseResponseMapper.toResponse(
                 licenseService.updateLicense(license, organizationId, locale));
         return ResponseEntity.ok(licenseResponse);
     }

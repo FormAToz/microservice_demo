@@ -13,17 +13,19 @@ import ru.format.demo.licenseservice.model.mapper.LicenseMapper;
 public class LicenseDaoImpl implements LicenseDao {
 
     private final LicenseRepository licenseRepository;
+    private final LicenseMapper licenseMapper;
+    private final LicenseEntityMapper licenseEntityMapper;
 
     @Override
     public License createLicense(License license) {
-        var licenseEntity = LicenseMapper.INSTANCE.toEntity(license);
-        return LicenseEntityMapper.INSTANCE.toModel(licenseRepository.save(licenseEntity));
+        var licenseEntity = licenseMapper.toEntity(license);
+        return licenseEntityMapper.toModel(licenseRepository.save(licenseEntity));
     }
 
     @Override
     public License getLicense(Long licenseId, Long organizationId) {
         var licenseEntity = licenseRepository.getByIdAndOrganizationId(licenseId, organizationId);
-        return LicenseEntityMapper.INSTANCE.toModel(licenseEntity);
+        return licenseEntityMapper.toModel(licenseEntity);
     }
 
     @Override
@@ -33,7 +35,7 @@ public class LicenseDaoImpl implements LicenseDao {
             licenseEntity.setDescription(license.getDescription());
             licenseEntity.setProductName(license.getProductName());
             licenseEntity.setLicenseType(license.getLicenseType());
-            return LicenseEntityMapper.INSTANCE.toModel(licenseRepository.save(licenseEntity));
+            return licenseEntityMapper.toModel(licenseRepository.save(licenseEntity));
         } else {
             return null;
         }
