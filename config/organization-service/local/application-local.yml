@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fstock_dev
+
+example:
+  property: I AM LOCAL FROM GIT
