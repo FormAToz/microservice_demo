@@ -1,4 +1,4 @@
-package ru.format.demo.licenseservice.controller.dto;
+package ru.format.demo.licenseservice.gw.rest.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

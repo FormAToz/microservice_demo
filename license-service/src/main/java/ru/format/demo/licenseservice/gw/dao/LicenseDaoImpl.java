@@ -1,10 +1,10 @@
-package ru.format.demo.licenseservice.db.dao.impl;
+package ru.format.demo.licenseservice.gw.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.format.demo.licenseservice.db.dao.api.LicenseDao;
-import ru.format.demo.licenseservice.db.entity.mapper.LicenseEntityMapper;
-import ru.format.demo.licenseservice.db.repository.LicenseRepository;
+import ru.format.demo.licenseservice.service.api.output.LicenseDao;
+import ru.format.demo.licenseservice.gw.dao.entity.mapper.LicenseEntityMapper;
+import ru.format.demo.licenseservice.gw.dao.repository.LicenseRepository;
 import ru.format.demo.licenseservice.model.License;
 import ru.format.demo.licenseservice.model.mapper.LicenseMapper;
 

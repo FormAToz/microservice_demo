@@ -2,7 +2,7 @@ package ru.format.demo.licenseservice.model.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.format.demo.licenseservice.db.entity.LicenseEntity;
+import ru.format.demo.licenseservice.gw.dao.entity.LicenseEntity;
 import ru.format.demo.licenseservice.model.License;
 
 @Mapper

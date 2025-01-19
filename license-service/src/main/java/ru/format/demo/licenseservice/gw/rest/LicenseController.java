@@ -1,14 +1,14 @@
-package ru.format.demo.licenseservice.controller;
+package ru.format.demo.licenseservice.gw.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.format.demo.licenseservice.controller.dto.LicenseRequest;
-import ru.format.demo.licenseservice.controller.dto.LicenseResponse;
-import ru.format.demo.licenseservice.controller.mapper.LicenseRequestMapper;
-import ru.format.demo.licenseservice.controller.mapper.LicenseResponseMapper;
-import ru.format.demo.licenseservice.service.api.LicenseService;
+import ru.format.demo.licenseservice.gw.rest.dto.LicenseRequest;
+import ru.format.demo.licenseservice.gw.rest.dto.LicenseResponse;
+import ru.format.demo.licenseservice.gw.rest.mapper.LicenseRequestMapper;
+import ru.format.demo.licenseservice.gw.rest.mapper.LicenseResponseMapper;
+import ru.format.demo.licenseservice.service.api.input.LicenseService;
 
 import java.util.Locale;
 

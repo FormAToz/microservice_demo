@@ -1,11 +1,11 @@
-package ru.format.demo.licenseservice.controller.handler;
+package ru.format.demo.licenseservice.gw.rest.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import ru.format.demo.licenseservice.controller.dto.ErrorResponse;
+import ru.format.demo.licenseservice.gw.rest.dto.ErrorResponse;
 
 @Slf4j
 @ControllerAdvice

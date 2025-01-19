@@ -1,4 +1,4 @@
-package ru.format.demo.licenseservice.db.dao.api;
+package ru.format.demo.licenseservice.service.api.output;
 
 import ru.format.demo.licenseservice.model.License;
 

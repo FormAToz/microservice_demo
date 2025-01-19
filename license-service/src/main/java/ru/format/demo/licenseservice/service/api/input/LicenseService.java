@@ -1,4 +1,4 @@
-package ru.format.demo.licenseservice.service.api;
+package ru.format.demo.licenseservice.service.api.input;
 
 import ru.format.demo.licenseservice.model.License;
 

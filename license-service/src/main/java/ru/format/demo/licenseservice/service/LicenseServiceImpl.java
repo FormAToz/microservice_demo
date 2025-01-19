@@ -1,12 +1,12 @@
-package ru.format.demo.licenseservice.service.impl;
+package ru.format.demo.licenseservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import ru.format.demo.licenseservice.config.ServiceConfig;
-import ru.format.demo.licenseservice.db.dao.api.LicenseDao;
+import ru.format.demo.licenseservice.service.api.output.LicenseDao;
 import ru.format.demo.licenseservice.model.License;
-import ru.format.demo.licenseservice.service.api.LicenseService;
+import ru.format.demo.licenseservice.service.api.input.LicenseService;
 
 import java.util.Locale;
 

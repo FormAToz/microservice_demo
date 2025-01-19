@@ -1,4 +1,4 @@
-package ru.format.demo.licenseservice.db.entity;
+package ru.format.demo.licenseservice.gw.dao.entity;
 
 import lombok.Getter;
 import lombok.Setter;

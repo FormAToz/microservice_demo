@@ -1,7 +1,7 @@
-package ru.format.demo.licenseservice.controller.mapper;
+package ru.format.demo.licenseservice.gw.rest.mapper;
 
 import org.mapstruct.Mapper;
-import ru.format.demo.licenseservice.controller.dto.LicenseResponse;
+import ru.format.demo.licenseservice.gw.rest.dto.LicenseResponse;
 import ru.format.demo.licenseservice.model.License;
 
 @Mapper

@@ -1,8 +1,8 @@
-package ru.format.demo.licenseservice.db.repository;
+package ru.format.demo.licenseservice.gw.dao.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.format.demo.licenseservice.db.entity.LicenseEntity;
+import ru.format.demo.licenseservice.gw.dao.entity.LicenseEntity;
 
 import javax.transaction.Transactional;
 
