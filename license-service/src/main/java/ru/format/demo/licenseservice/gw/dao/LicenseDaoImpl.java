@@ -2,23 +2,21 @@ package ru.format.demo.licenseservice.gw.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.format.demo.licenseservice.service.api.output.LicenseDao;
 import ru.format.demo.licenseservice.gw.dao.entity.mapper.LicenseEntityMapper;
 import ru.format.demo.licenseservice.gw.dao.repository.LicenseRepository;
 import ru.format.demo.licenseservice.model.License;
-import ru.format.demo.licenseservice.model.mapper.LicenseMapper;
+import ru.format.demo.licenseservice.service.api.output.LicenseDao;
 
 @RequiredArgsConstructor
 @Component
 public class LicenseDaoImpl implements LicenseDao {
 
     private final LicenseRepository licenseRepository;
-    private final LicenseMapper licenseMapper;
     private final LicenseEntityMapper licenseEntityMapper;
 
     @Override
     public License createLicense(License license) {
-        var licenseEntity = licenseMapper.toEntity(license);
+        var licenseEntity = licenseEntityMapper.toEntity(license);
         return licenseEntityMapper.toModel(licenseRepository.save(licenseEntity));
     }
 

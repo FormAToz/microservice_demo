@@ -10,4 +10,7 @@ public interface LicenseEntityMapper {
 
     @Mapping(target = "comment", ignore = true)
     License toModel(LicenseEntity licenseEntity);
+
+    @Mapping(target = "id", ignore = true)
+    LicenseEntity toEntity(License license);
 }
