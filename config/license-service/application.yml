@@ -12,3 +12,13 @@ spring:
 
 example:
   property: I AM DEFAULT FROM GIT
+
+# Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,refresh,bus-refresh
+  endpoint:
+    health:
+      show-details: always

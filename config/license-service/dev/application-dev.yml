@@ -4,13 +4,3 @@ spring:
 
 example:
   property: I AM DEV FROM GIT
-
-# Spring Boot Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,env,refresh,bus-refresh
-  endpoint:
-    health:
-      show-details: always
