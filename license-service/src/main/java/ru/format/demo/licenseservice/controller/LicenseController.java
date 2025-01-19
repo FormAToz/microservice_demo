@@ -28,7 +28,7 @@ public class LicenseController {
                                                          @RequestBody LicenseRequest licenseRequest,
                                                          @RequestHeader(value = "Accept-Language", required = false)
                                                          Locale locale) {
-        log.info("[POST] createLicense(): organizationId={}, licenseRequest={}, locale={}",
+        log.info("createLicense(): organizationId={}, licenseRequest={}, locale={}",
                 organizationId, licenseRequest, locale);
 
         var license = LicenseRequestMapper.INSTANCE.toModel(licenseRequest, organizationId);
@@ -42,7 +42,7 @@ public class LicenseController {
                                                       @PathVariable Long licenseId,
                                                       @RequestHeader(value = "Accept-Language", required = false)
                                                       Locale locale) {
-        log.info("[GET] getLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
+        log.info("getLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
 
         var license = licenseService.getLicense(licenseId, organizationId, locale);
         var licenseRequest = LicenseRequestMapper.INSTANCE.toRequest(license);
@@ -68,6 +68,9 @@ public class LicenseController {
                                                 @RequestBody LicenseRequest licenseRequest,
                                                 @RequestHeader(value = "Accept-Language", required = false)
                                                 Locale locale) {
+        log.info("updateLicense(): organizationId={}, licenseRequest={}, locale={}",
+                organizationId, licenseRequest, locale);
+
         var license = LicenseRequestMapper.INSTANCE.toModel(licenseRequest, organizationId);
         var licenseResponse = LicenseResponseMapper.INSTANCE.toResponse(
                 licenseService.updateLicense(license, organizationId, locale));
@@ -79,6 +82,8 @@ public class LicenseController {
                                                 @PathVariable Long licenseId,
                                                 @RequestHeader(value = "Accept-Language", required = false)
                                                 Locale locale) {
+        log.info("deleteLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
+
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId, locale));
     }
 }
