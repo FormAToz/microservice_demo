@@ -51,6 +51,24 @@ services:
         aliases:
           - license-service
 
+  organization-service:
+    image: organization-service:latest
+    container_name: organization-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
+    depends_on:
+      config-server:
+        condition: service_started
+      database:
+        condition: service_healthy
+    networks:
+      backend:
+        aliases:
+          - organization-service
+
   eureka-server:
     image: eureka-server:latest
     container_name: eureka-server
