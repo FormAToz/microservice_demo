@@ -2,7 +2,7 @@ package ru.format.demo.licenseservice.gw.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.format.demo.licenseservice.gw.dao.entity.mapper.LicenseEntityMapper;
+import ru.format.demo.licenseservice.gw.dao.mapper.LicenseEntityMapper;
 import ru.format.demo.licenseservice.gw.dao.repository.LicenseRepository;
 import ru.format.demo.licenseservice.model.License;
 import ru.format.demo.licenseservice.service.api.output.LicenseDao;

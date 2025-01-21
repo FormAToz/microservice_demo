@@ -1,4 +1,4 @@
-package ru.format.demo.licenseservice.gw.dao.entity.mapper;
+package ru.format.demo.licenseservice.gw.dao.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

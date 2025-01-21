@@ -22,9 +22,9 @@ public class LicenseServiceImpl implements LicenseService {
     public License createLicense(License license, Locale locale) {
         var savedLicense = licenseDao.createLicense(license);
         if (savedLicense == null) {
-            throw new IllegalArgumentException(String.format(
-                    messageSource.getMessage("license.create.error.message", null, locale),
-                    license.getOrganizationId(), license));
+            throw new IllegalArgumentException(
+                    messageSource.getMessage("license.create.error.message", null, locale)
+                            .formatted(license.getOrganizationId(), license));
         } else {
             savedLicense.setComment(serviceConfig.getProperty());
             return savedLicense;
@@ -35,9 +35,9 @@ public class LicenseServiceImpl implements LicenseService {
     public License getLicense(Long licenseId, Long organizationId, Locale locale) {
         var license = licenseDao.getLicense(licenseId, organizationId);
         if (license == null) {
-            throw new IllegalArgumentException(String.format(
-                    messageSource.getMessage("license.get.error.message", null, locale),
-                    licenseId, organizationId));
+            throw new IllegalArgumentException(
+                    messageSource.getMessage("license.get.error.message", null, locale)
+                            .formatted(licenseId, organizationId));
         }
         license.setComment(serviceConfig.getProperty());
         return license;
@@ -47,9 +47,9 @@ public class LicenseServiceImpl implements LicenseService {
     public License updateLicense(License license, Long organizationId, Locale locale) {
         var updatedLicense = licenseDao.updateLicense(license, organizationId);
         if (updatedLicense == null) {
-            throw new IllegalArgumentException(String.format(
-                    messageSource.getMessage("license.update.error.message", null, locale),
-                    license.getId(), organizationId));
+            throw new IllegalArgumentException(
+                    messageSource.getMessage("license.update.error.message", null, locale)
+                            .formatted(license.getId(), organizationId));
         }
         updatedLicense.setComment(serviceConfig.getProperty());
         return updatedLicense;
@@ -58,11 +58,11 @@ public class LicenseServiceImpl implements LicenseService {
     @Override
     public String deleteLicense(Long licenseId, Long organizationId, Locale locale) {
         if (licenseDao.deleteLicense(licenseId, organizationId) == 0) {
-            throw new IllegalArgumentException(String.format(
-                    messageSource.getMessage("license.delete.error.message", null, locale),
-                    licenseId, organizationId));
+            throw new IllegalArgumentException(
+                    messageSource.getMessage("license.delete.error.message", null, locale)
+                            .formatted(licenseId, organizationId));
         }
-        return String.format(messageSource.getMessage("license.delete.message", null, locale),
-                licenseId, organizationId);
+        return messageSource.getMessage("license.delete.message", null, locale)
+                .formatted(licenseId, organizationId);
     }
 }

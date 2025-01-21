@@ -26,10 +26,14 @@ public class LicenseController {
     private final LicenseResponseMapper licenseResponseMapper;
 
     @PostMapping
-    public ResponseEntity<LicenseResponse> createLicense(@PathVariable Long organizationId, // TODO Validation
-                                                         @RequestBody LicenseRequest licenseRequest,
-                                                         @RequestHeader(value = "Accept-Language", required = false)
-                                                         Locale locale) {
+    public ResponseEntity<LicenseResponse> createLicense(
+            @PathVariable
+            Long organizationId,
+            @RequestBody
+            LicenseRequest licenseRequest,
+            @RequestHeader(value = "Accept-Language", required = false)
+            Locale locale
+    ) {
         log.info("createLicense(): organizationId={}, licenseRequest={}, locale={}",
                 organizationId, licenseRequest, locale);
 
@@ -40,10 +44,14 @@ public class LicenseController {
     }
 
     @GetMapping("/{licenseId}")
-    public ResponseEntity<LicenseResponse> getLicense(@PathVariable Long organizationId,
-                                                      @PathVariable Long licenseId,
-                                                      @RequestHeader(value = "Accept-Language", required = false)
-                                                      Locale locale) {
+    public ResponseEntity<LicenseResponse> getLicense(
+            @PathVariable
+            Long organizationId,
+            @PathVariable
+            Long licenseId,
+            @RequestHeader(value = "Accept-Language", required = false)
+            Locale locale
+    ) {
         log.info("getLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
 
         var license = licenseService.getLicense(licenseId, organizationId, locale);
@@ -66,10 +74,14 @@ public class LicenseController {
     }
 
     @PutMapping
-    public ResponseEntity<LicenseResponse> updateLicense(@PathVariable Long organizationId,
-                                                @RequestBody LicenseRequest licenseRequest,
-                                                @RequestHeader(value = "Accept-Language", required = false)
-                                                Locale locale) {
+    public ResponseEntity<LicenseResponse> updateLicense(
+            @PathVariable
+            Long organizationId,
+            @RequestBody
+            LicenseRequest licenseRequest,
+            @RequestHeader(value = "Accept-Language", required = false)
+            Locale locale
+    ) {
         log.info("updateLicense(): organizationId={}, licenseRequest={}, locale={}",
                 organizationId, licenseRequest, locale);
 
@@ -80,10 +92,14 @@ public class LicenseController {
     }
 
     @DeleteMapping("/{licenseId}")
-    public ResponseEntity<String> deleteLicense(@PathVariable Long organizationId,
-                                                @PathVariable Long licenseId,
-                                                @RequestHeader(value = "Accept-Language", required = false)
-                                                Locale locale) {
+    public ResponseEntity<String> deleteLicense(
+            @PathVariable
+            Long organizationId,
+            @PathVariable
+            Long licenseId,
+            @RequestHeader(value = "Accept-Language", required = false)
+            Locale locale
+    ) {
         log.info("deleteLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
 
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId, locale));
