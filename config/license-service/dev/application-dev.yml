@@ -11,5 +11,14 @@ spring:
     username: postgres
     password: '{cipher}831b0afbf77bd60d012e6f22efb2aff6dd4cfd501cc97296cc58afdfc47da2a3'
 
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
 example:
   property: I AM DEV FROM GIT
