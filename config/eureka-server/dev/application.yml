@@ -1,6 +1,12 @@
 server:
   port: 8070
 
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+
 eureka:
   instance:
     hostname: eureka-server

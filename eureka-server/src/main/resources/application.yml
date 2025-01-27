@@ -1,9 +1,5 @@
 spring:
   application:
     name: eureka-server
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
   config:
     import: optional:configserver:http://config-server:8071
