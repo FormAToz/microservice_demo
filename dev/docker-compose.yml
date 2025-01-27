@@ -18,7 +18,7 @@ services:
         aliases:
           - database
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -32,6 +32,11 @@ services:
       backend:
         aliases:
           - config-server
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8071/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   license-service:
     image: license-service:latest
@@ -43,7 +48,7 @@ services:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
-        condition: service_started
+        condition: service_healthy
       database:
         condition: service_healthy
     networks:
@@ -61,7 +66,7 @@ services:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
-        condition: service_started
+        condition: service_healthy
       database:
         condition: service_healthy
     networks:
@@ -79,7 +84,7 @@ services:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
-        condition: service_started
+        condition: service_healthy
     networks:
       backend:
         aliases:

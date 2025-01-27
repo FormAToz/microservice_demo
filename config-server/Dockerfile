@@ -28,5 +28,8 @@ COPY --from=build application/spring-boot-loader/ ./
 COPY --from=build application/snapshot-dependencies/ ./
 COPY --from=build application/application/ ./
 
+# Добавляем curl в контейнер и в PATH (отсутствует по умолчанию)
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # Использовать org.springframework.boot.loader.JarLauncher для запуска приложения
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
