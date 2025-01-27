@@ -1,18 +1,16 @@
 package ru.format.demo.licenseservice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
-@ToString
-@Getter
-@Setter
+@Data
+@SuperBuilder
 public class License {
 
-    private Long id;
-    private String description;
-    private Long organizationId;
-    private String productName;
-    private String licenseType;
-    private String comment;
+    protected Long id;
+    protected String description;
+    protected Long organizationId;
+    protected String productName;
+    protected String licenseType;
+    protected String comment;
 }
