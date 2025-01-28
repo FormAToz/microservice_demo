@@ -45,7 +45,6 @@ services:
       - "8080:8080"
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
         condition: service_healthy
@@ -63,7 +62,6 @@ services:
       - "8081:8081"
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
         condition: service_healthy
@@ -81,7 +79,6 @@ services:
       - "8070:8070"
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
     depends_on:
       config-server:
         condition: service_healthy
