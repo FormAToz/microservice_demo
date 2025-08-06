@@ -3,3 +3,8 @@ spring:
     name: license-service
   config:
     import: optional:configserver:http://config-server:8071
+
+logging:
+  level:
+    org.springframework.web: WARN
+    ru.format.demo: DEBUG

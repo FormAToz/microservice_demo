@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.format.demo.licenseservice.gw.input.rest.dto.LicenseFullResponse;
 import ru.format.demo.licenseservice.gw.input.rest.dto.LicenseRequest;
 import ru.format.demo.licenseservice.gw.input.rest.dto.LicenseResponse;
+import ru.format.demo.licenseservice.gw.input.rest.filter.UserContextHolder;
 import ru.format.demo.licenseservice.gw.input.rest.mapper.LicenseFullResponseMapper;
 import ru.format.demo.licenseservice.gw.input.rest.mapper.LicenseRequestMapper;
 import ru.format.demo.licenseservice.gw.input.rest.mapper.LicenseResponseMapper;
@@ -55,7 +56,8 @@ public class LicenseController {
             @RequestHeader(value = "Accept-Language", required = false)
             Locale locale
     ) {
-        log.info("getLicense(): organizationId={}, licenseId={}, locale={}", organizationId, licenseId, locale);
+        log.info("getLicense(): correlationId={}, organizationId={}, licenseId={}, locale={}",
+                UserContextHolder.getContext().getCorrelationId(), organizationId, licenseId, locale);
 
         var license = licenseService.getLicense(organizationId, licenseId, locale);
         var licenseRequest = licenseRequestMapper.toRequest(license);
