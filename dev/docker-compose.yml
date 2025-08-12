@@ -87,6 +87,21 @@ services:
         aliases:
           - eureka-server
 
+  gw-server:
+    image: gw-server:latest
+    container_name: gw-server
+    ports:
+      - "8072:8072"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      config-server:
+        condition: service_healthy
+    networks:
+      backend:
+        aliases:
+          - gw-server
+
 networks:
   backend:
     driver: bridge

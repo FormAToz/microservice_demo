@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: gw-server
+  config:
+    import: optional:configserver:http://config-server:8071
