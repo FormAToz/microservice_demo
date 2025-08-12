@@ -10,6 +10,14 @@ eureka:
     service-url:
       defaultZone: http://eureka-server:8070/eureka
 
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # разрешает шлюзу определять маршруты, используя механизм обнаружения служб
+          lower-case-service-id: true
+
 # Spring Boot Actuator
 management:
   endpoints:
