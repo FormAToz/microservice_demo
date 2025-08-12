@@ -1,0 +1,21 @@
+server:
+  port: 8072
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8070/eureka
+
+# Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,refresh,bus-refresh
+  endpoint:
+    health:
+      show-details: always
