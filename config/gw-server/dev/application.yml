@@ -13,10 +13,6 @@ eureka:
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true # разрешает шлюзу определять маршруты, используя механизм обнаружения служб
-          lower-case-service-id: true
       routes:
         - id: organization-service
           uri: lb://organization-service
