@@ -15,7 +15,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,env,refresh,bus-refresh,routes
+        include: health,env,refresh,bus-refresh,gateway
   endpoint:
     health:
       show-details: always
