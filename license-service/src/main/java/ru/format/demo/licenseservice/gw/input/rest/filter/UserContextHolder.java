@@ -2,7 +2,7 @@ package ru.format.demo.licenseservice.gw.input.rest.filter;
 
 public class UserContextHolder {
 
-    private static final ThreadLocal<UserContext> userContext = new ThreadLocal<UserContext>();
+    private static final ThreadLocal<UserContext> userContext = new ThreadLocal<>();
 
     public static UserContext getContext() {
         UserContext context = userContext.get();

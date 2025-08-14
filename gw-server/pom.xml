@@ -12,12 +12,14 @@
     <groupId>ru.format.demo</groupId>
     <artifactId>gw-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gw-server</name>
+    <name>Gateway server</name>
     <description>Gateway demo server</description>
 
     <properties>
-        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <spring-cloud.version>2022.0.5</spring-cloud.version>
+        <lombok.version>1.18.24</lombok.version>
         <docker.image.prefix>fstock</docker.image.prefix>
     </properties>
 
@@ -50,6 +52,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

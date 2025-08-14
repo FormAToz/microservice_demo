@@ -1,3 +1,12 @@
 spring:
   config:
     import: optional:configserver:http://localhost:8071
+  cloud:
+    inetutils:
+      timeout-seconds: 6 # чтобы предотвратить 'Cannot determine local hostname'
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    ru.format.demo: DEBUG
