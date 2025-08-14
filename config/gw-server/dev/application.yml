@@ -14,6 +14,12 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: license-service
+          uri: lb://license-service
+          predicates:
+            - Path=/license/**
+          filters:
+            - RewritePath=/license/(?<path>.*), /$\{path}
         - id: organization-service
           uri: lb://organization-service
           predicates:
