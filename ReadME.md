@@ -30,10 +30,23 @@ $ docker build . -t <service-name>
 ```
 
 
-**Create Docker images for PostgreSql:**
+**Create Docker image for PostgreSql:**
 ```bash
 # pull image from DockerHub
 $ docker pull postgres
+```
+
+
+**Create Docker image for Keycloak:**
+```bash
+# pull image from DockerHub
+$ docker pull quay.io/keycloak/keycloak:latest
+
+# run the container with Admin rights
+$ docker run -p 8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:latest start-dev --http-port=8080
+
+# access the Keycloak Admin Console
+$ http://localhost:8080
 ```
 
 

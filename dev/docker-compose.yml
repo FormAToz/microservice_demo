@@ -23,6 +23,23 @@ services:
       timeout: 5s
       retries: 5
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    restart: always
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    command:
+      - start-dev
+      - --http-port=8080
+    networks:
+      backend:
+        aliases:
+          - keycloak
+
   config-server:
     image: config-server:latest
     container_name: config-server
@@ -42,7 +59,7 @@ services:
     image: license-service:latest
     container_name: license-service
     ports:
-      - "8080:8080"
+      - "8180:8180"
     environment:
       SPRING_PROFILES_ACTIVE: dev
     depends_on:
