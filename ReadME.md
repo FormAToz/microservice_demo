@@ -43,7 +43,7 @@ $ docker pull postgres
 $ docker pull quay.io/keycloak/keycloak:latest
 
 # run the container with Admin rights
-$ docker run -p 8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:latest start-dev --http-port=8080
+$ docker run -d -p 8080:8080 -e kc_bootstrap_admin_username=admin -e kc_bootstrap_admin_password=admin quay.io/keycloak/keycloak:latest start-dev --http-port=8080
 
 # access the Keycloak Admin Console
 $ http://localhost:8080
