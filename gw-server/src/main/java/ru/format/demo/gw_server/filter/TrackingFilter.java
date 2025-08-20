@@ -21,19 +21,21 @@ public class TrackingFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
-        if (isCorrelationIdPresent(requestHeaders)) {
-            log.debug("tmx-correlation-id found in tracking filter: {}", filterUtils.getCorrelationId(requestHeaders));
-        } else {
-            String correlationId = generateCorrelationId();
-            exchange = filterUtils.setCorrelationId(exchange, correlationId);
-
-            log.debug("tmx-correlation-id generated in tracking filter: {}", correlationId);
-        }
+        exchange = filterUtils.setCorrelationId(exchange, getCorrelationId(requestHeaders));
         return chain.filter(exchange);
     }
 
-    private boolean isCorrelationIdPresent(HttpHeaders requestHeaders) {
-        return filterUtils.getCorrelationId(requestHeaders) != null;
+    private String getCorrelationId(HttpHeaders requestHeaders) {
+        boolean correlationIdPresent = filterUtils.getCorrelationId(requestHeaders) != null;
+        String correlationId;
+        if (correlationIdPresent) {
+            log.debug("tmx-correlation-id found in tracking filter: {}", filterUtils.getCorrelationId(requestHeaders));
+            correlationId = filterUtils.getCorrelationId(requestHeaders);
+        } else {
+            correlationId = generateCorrelationId();
+            log.debug("tmx-correlation-id generated in tracking filter: {}", correlationId);
+        }
+        return correlationId;
     }
 
     private String generateCorrelationId() {

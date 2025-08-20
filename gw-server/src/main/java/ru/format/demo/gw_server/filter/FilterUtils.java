@@ -5,9 +5,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import java.util.Optional;
-
-
 @Component
 public class FilterUtils {
 
@@ -15,12 +12,23 @@ public class FilterUtils {
 
     @Nullable
     public String getCorrelationId(HttpHeaders requestHeaders) {
-        return Optional.ofNullable(requestHeaders.get(CORRELATION_ID))
-                .flatMap(headers -> headers.stream().findFirst())
-                .orElse(null);
+        return requestHeaders.getFirst(CORRELATION_ID);
     }
 
-    public ServerWebExchange setRequestHeader(ServerWebExchange exchange, String name, String value) {
+    public ServerWebExchange setCorrelationId(ServerWebExchange exchange, String correlationId) {
+        return setRequestHeader(exchange, CORRELATION_ID, correlationId);
+    }
+
+    @Nullable
+    public String getAuthToken(HttpHeaders requestHeaders) {
+        return requestHeaders.getFirst(HttpHeaders.AUTHORIZATION);
+    }
+
+    public void setResponseHeader(ServerWebExchange exchange, String name, String value) {
+        exchange.getResponse().getHeaders().add(name, value);
+    }
+
+    private ServerWebExchange setRequestHeader(ServerWebExchange exchange, String name, String value) {
         return exchange
                 .mutate()
                 .request(
@@ -28,9 +36,5 @@ public class FilterUtils {
                                 .header(name, value)
                                 .build())
                 .build();
-    }
-
-    public ServerWebExchange setCorrelationId(ServerWebExchange exchange, String correlationId) {
-        return this.setRequestHeader(exchange, CORRELATION_ID, correlationId);
     }
 }
