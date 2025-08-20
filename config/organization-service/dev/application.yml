@@ -36,7 +36,7 @@ eureka:
 keycloak:
   realm: format-realm
   auth-server-url: http://keycloak:8080
-  ssl-required: external
+  ssl-required: none
   resource: fstock
   credentials.secret: 6knWgXi0cnsjQ55MQuZpRSy6bMmu0y5W
   use-resource-role-mappings: true
