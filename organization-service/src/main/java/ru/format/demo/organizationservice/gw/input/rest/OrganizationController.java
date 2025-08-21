@@ -10,6 +10,7 @@ import ru.format.demo.organizationservice.gw.input.rest.mapper.OrganizationReque
 import ru.format.demo.organizationservice.gw.input.rest.mapper.OrganizationResponseMapper;
 import ru.format.demo.organizationservice.service.input.OrganizationService;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Locale;
 
 @Slf4j
@@ -22,6 +23,7 @@ public class OrganizationController {
     private final OrganizationRequestMapper organizationRequestMapper;
     private final OrganizationResponseMapper organizationResponseMapper;
 
+    @RolesAllowed({"ADMIN", "USER"})
     @PostMapping
     public ResponseEntity<OrganizationResponse> saveOrganization(
             @RequestBody
@@ -36,6 +38,7 @@ public class OrganizationController {
         return ResponseEntity.ok(response);
     }
 
+    @RolesAllowed({"ADMIN", "USER"})
     @GetMapping("/{organizationId}")
     public ResponseEntity<OrganizationResponse> getOrganization(
             @PathVariable
@@ -49,6 +52,7 @@ public class OrganizationController {
         return ResponseEntity.ok(response);
     }
 
+    @RolesAllowed({"ADMIN", "USER"})
     @PutMapping("/{organizationId}")
     public ResponseEntity<OrganizationResponse> updateOrganization(
             @PathVariable
@@ -66,6 +70,7 @@ public class OrganizationController {
         return ResponseEntity.ok(response);
     }
 
+    @RolesAllowed("ADMIN")
     @DeleteMapping("/{organizationId}")
     public ResponseEntity<String> deleteOrganization(
             @PathVariable
