@@ -19,11 +19,6 @@ public class FilterUtils {
         return setRequestHeader(exchange, CORRELATION_ID, correlationId);
     }
 
-    @Nullable
-    public String getAuthToken(HttpHeaders requestHeaders) {
-        return requestHeaders.getFirst(HttpHeaders.AUTHORIZATION);
-    }
-
     public void setResponseHeader(ServerWebExchange exchange, String name, String value) {
         exchange.getResponse().getHeaders().add(name, value);
     }

@@ -22,15 +22,10 @@ public class ResponseFilter {
                 .then(Mono.fromRunnable(
                         () -> {
                             HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
-                            setAuthHeader(requestHeaders, exchange);
                             setCorrelationIdHeader(requestHeaders, exchange);
                         })
                 )
         );
-    }
-
-    private void setAuthHeader(HttpHeaders requestHeaders, ServerWebExchange exchange) {
-        filterUtils.setResponseHeader(exchange, HttpHeaders.AUTHORIZATION, filterUtils.getAuthToken(requestHeaders));
     }
 
     private void setCorrelationIdHeader(HttpHeaders requestHeaders, ServerWebExchange exchange) {
