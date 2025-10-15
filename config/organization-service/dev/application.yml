@@ -13,6 +13,8 @@ spring:
     url: jdbc:postgresql://database:5432/fstock_dev
     username: postgres
     password: '{cipher}831b0afbf77bd60d012e6f22efb2aff6dd4cfd501cc97296cc58afdfc47da2a3'
+  kafka:
+    bootstrap-servers: kafka:9092
 
 # Spring Boot Actuator
 management:
