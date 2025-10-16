@@ -3,6 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/fstock_dev
   kafka:
     bootstrap-servers: localhost:9092
+  cloud.stream.kafka.binder.brokers: localhost
 
 eureka:
   client:
