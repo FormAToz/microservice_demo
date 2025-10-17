@@ -34,7 +34,8 @@ services:
       - "8080:8080"
     command:
       - start-dev
-      - --http-port=8080
+      - --hostname=http://localhost:8080
+      - --hostname-backchannel-dynamic=true
     networks:
       backend:
         aliases:
