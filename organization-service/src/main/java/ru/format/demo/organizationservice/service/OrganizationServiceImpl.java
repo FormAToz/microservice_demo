@@ -3,6 +3,8 @@ package ru.format.demo.organizationservice.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+import ru.format.demo.organizationservice.gw.output.event.OrganizationPublisher;
+import ru.format.demo.organizationservice.gw.output.event.model.Action;
 import ru.format.demo.organizationservice.model.Organization;
 import ru.format.demo.organizationservice.service.input.OrganizationService;
 import ru.format.demo.organizationservice.service.output.OrganizationDao;
@@ -16,14 +18,18 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     private final MessageSource messageSource;
     private final OrganizationDao organizationDao;
+    private final OrganizationPublisher orgPublisher;
 
     @Override
     public Organization create(Organization organization, Locale locale) {
-        return Optional.ofNullable(organizationDao.create(organization))
+        Organization org = Optional.ofNullable(organizationDao.create(organization))
                 .orElseThrow(() -> new IllegalArgumentException(
                         messageSource.getMessage("organization.create.error.message", null, locale)
                                 .formatted(organization.getName())
                 ));
+        orgPublisher.publishOrganizationChange(Action.CREATED, org.getId());
+
+        return org;
     }
 
     @Override
