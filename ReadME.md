@@ -2,7 +2,6 @@
 # Microservice demo
 
 Demo of microservice interaction.
-
 ## Stack
 
 * Java 17
@@ -10,15 +9,17 @@ Demo of microservice interaction.
 * Lombok
 * Mapstruct
 * PostgreSQL
+* Keycloak
+* Kafka
+* Zookeeper
+* Redis
 
 ## How to use
-
 **Clone repository from GitHub:**
 ```bash
 $ git clone https://github.com/FormAToz/microservice_demo.git
 ```
 FYI: all services have ReadMe-file with named commands.
-
 
 **Create Docker images for all services (run commands inside each service project folder):**
 ```bash
@@ -29,7 +30,6 @@ $ mvn clean package
 $ docker build . -t <service-name>
 ```
 
-
 **Create images from DockerHub:**
 ```bash
 $ docker pull postgres
@@ -37,7 +37,6 @@ $ docker pull wurstmeister/kafka:latest
 $ docker pull wurstmeister/zookeeper:latest
 $ docker pull redis:alpine
 ```
-
 
 **Create Docker image for Keycloak:**
 ```bash
@@ -109,7 +108,6 @@ $ curl --location 'http://localhost:8080/realms/format-realm/protocol/openid-con
 --data-urlencode 'username=admin' \
 --data-urlencode 'password=admin'
 ```
-
 
 **Get back to microservice-demo/dev project folder and run all services via Docker compose:**
 ```bash
