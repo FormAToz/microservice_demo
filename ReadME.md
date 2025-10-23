@@ -30,10 +30,12 @@ $ docker build . -t <service-name>
 ```
 
 
-**Create Docker image for PostgreSql:**
+**Create images from DockerHub:**
 ```bash
-# pull image from DockerHub
 $ docker pull postgres
+$ docker pull wurstmeister/kafka:latest
+$ docker pull wurstmeister/zookeeper:latest
+$ docker pull redis:alpine
 ```
 
 
@@ -47,6 +49,65 @@ $ docker run -d -p 8080:8080 -e kc_bootstrap_admin_username=admin -e kc_bootstra
 
 # access the Keycloak Admin Console
 $ http://localhost:8080
+
+# create realm
+Manage realms -> Create realm -> format_realm
+
+# create client
+General settings:
+	Client ID: fstock
+	Client type: OpenID Connect
+Capability config:
+	Client authentication: enabled
+	Standard flow: enabled
+	Direct access grants: enabled
+	Service accounts roles: enabled
+Login settings:
+	Valid redirect URIs: http://localhost/80*
+	Web origins: *
+	
+# the client's secret key (required to receive the token) is located in
+Clients -> fstock -> Credentials -> Client Secret
+
+# create roles: ADMIN and USER
+Clients -> fstock -> Roles -> Create role
+
+# create realm roles and associate them with client roles
+Role name: fstock-admin
+Associated roles -> Assign role -> Client roles -> ADMIN
+Role name: fstock-user
+Associated roles -> Assign role -> Client roles -> USER
+
+# create two users with different roles
+Users -> Create new user:
+    Email verified: enabled
+    Username: admin
+    Email: admin@email.com
+    First name: admin
+    Last name: admin
+    Credentials -> Set password:
+        Password: admin
+        Temporary: disabled
+    Role mapping -> Assign role -> Realm roles -> fstock-admin
+    
+    Email verified: enabled
+    Username: user
+    Email: user@email.com
+    First name: user
+    Last name: user
+    Credentials -> Set password:
+        Password: user
+        Temporary: disabled
+    Role mapping -> Assign role -> Realm roles -> fstock-user
+    
+# After receiving the token, you can view its contents and make sure that each user
+# corresponds to his role. An example of getting a token for admin:
+$ curl --location 'http://localhost:8080/realms/format-realm/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Authorization: Basic <Client Secret from step 2>' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'username=admin' \
+--data-urlencode 'password=admin'
 ```
 
 
